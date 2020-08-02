@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>sms_0.1</display-name>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 配置字符编码过滤器 -->
+  <filter>
+  	<filter-name>CharacterEncodingFilter</filter-name>
+  	<filter-class>com.djg.sms.filter.CharacterEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>utf8</param-value>
+  	</init-param>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>CharacterEncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern> 	
+  </filter-mapping>
+  
+  <!-- 配置权限过滤器 -->
+  <filter>
+  	<filter-name>PermissionFilter</filter-name>
+  	<filter-class>com.djg.sms.filter.PermissionFilter</filter-class>  	
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>PermissionFilter</filter-name>
+  	<url-pattern>/main/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 配置 分页显示 学生信息的StudentListServlet -->
+  <servlet>
+  	<servlet-name>StudentListServlet</servlet-name>
+  	<servlet-class>com.djg.sms.servlet.StudentListServlet</servlet-class>
+  	
+  	<init-param>
+  		<param-name>pageSize</param-name>
+  		<param-value>15</param-value>
+  	</init-param>
+  	
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>mohuFindServlet</servlet-name>
+  	<url-pattern>/main/stu_list</url-pattern>
+  </servlet-mapping>
+  <!-- 配置 分页显示// 查询//信息的StudentListServlet -->
+  <servlet>
+  	<servlet-name>mohuFindServlet</servlet-name>
+  	<servlet-class>com.djg.sms.servlet.mohuFindServlet</servlet-class>
+  	
+  	<init-param>
+  		<param-name>pageSize</param-name>
+  		<param-value>15</param-value>
+  	</init-param>
+  	
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>mohuFindServlet</servlet-name>
+  	<url-pattern>/main/stu_list222</url-pattern>
+  </servlet-mapping>
+  
+  
+    <!-- 配置 分页显示用户信息的UserListServlet -->
+  <servlet>
+  	<servlet-name>UserListServlet</servlet-name>
+  	<servlet-class>com.djg.sms.servlet.UserListServlet</servlet-class>
+  	
+  	<init-param>
+  		<param-name>pageSize</param-name>
+  		<param-value>15</param-value>
+  	</init-param>
+  	
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>UserListServlet</servlet-name>
+  	<url-pattern>/main/user_list</url-pattern>
+  </servlet-mapping>
+</web-app>
